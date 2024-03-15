@@ -1,0 +1,5 @@
+given_string <- "hello world"
+unique_elements_string <- unique(strsplit(given_string, NULL)[[1]])
+unique_elements_vector <- unique(c(3, 5, 7, 3, 8, 5, 2))
+cat("Unique Elements in String:", unique_elements_string, "\n")
+cat("Unique Elements in Vector:", unique_elements_vector, "\n")
