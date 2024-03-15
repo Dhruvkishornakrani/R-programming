@@ -1,0 +1,14 @@
+sieve <- function(n) {
+  primes <- rep(TRUE, n)
+  primes[1] <- FALSE
+  for (i in 2:sqrt(n)) {
+    if (primes[i]) {
+      primes[i^2:n] <- FALSE
+    }
+  }
+  return(which(primes))
+}
+
+given_number <- as.numeric(readline("Enter a number: "))
+primes_up_to_given <- sieve(given_number)
+cat("Prime Numbers up to", given_number, ":", primes_up_to_given, "\n")
