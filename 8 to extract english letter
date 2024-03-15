@@ -1,0 +1,6 @@
+letters_lower <- letters[1:10]
+letters_upper_last <- toupper(letters[17:26])
+letters_substring <- toupper(substr(letters, 22, 24))
+cat("First 10 Lowercase Letters:", letters_lower, "\n")
+cat("Last 10 Uppercase Letters:", letters_upper_last, "\n")
+cat("Letters from 22nd to 24th in Uppercase:", letters_substring, "\n")
