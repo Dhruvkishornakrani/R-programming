@@ -1,0 +1,7 @@
+given_number <- as.numeric(readline("Enter a number: "))
+factors <- which(given_number %% 1:given_number == 0)
+cat("Factors of", given_number, ":", factors, "\n")
+# Task 10
+given_vector <- c(5, -2, 10, 8, 3, -1, 0, 7, 12, -4)
+cat("Maximum Value:", max(given_vector), "\n")
+cat("Minimum Value:", min(given_vector), "\n")
