@@ -1,0 +1,2 @@
+object_details <- ls.str()
+print(object_details)
