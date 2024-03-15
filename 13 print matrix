@@ -1,0 +1,5 @@
+a <- c(1, 4, 7)
+b <- c(2, 5, 8)
+c <- c(3, 6, 9)
+combined_matrix <- cbind(a, b, c)
+cat("Combined Matrix:\n", combined_matrix, "\n")
