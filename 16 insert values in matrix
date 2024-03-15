@@ -1,0 +1,7 @@
+matrix1 <- matrix(1:20, nrow = 5, ncol = 4, byrow = TRUE)
+matrix2 <- matrix(21:29, nrow = 3, ncol = 3, dimnames = list(c("row1", "row2", "row3"), c("col1", "col2", "col3")))
+matrix3 <- matrix(30:33, nrow = 2, ncol = 2, byrow = FALSE)
+
+print(matrix1)
+print(matrix2)
+print(matrix3)
