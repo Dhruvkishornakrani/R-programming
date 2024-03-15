@@ -1,0 +1,8 @@
+numeric_vector <- c(1, 2, 3)
+character_matrix <- matrix(c("a", "b", "c", "d"), nrow = 2)
+custom_function <- function(x) {
+  return(x * 2)
+}
+
+my_list <- list(numeric_vector, character_matrix, custom_function)
+print(my_list)
