@@ -1,0 +1,30 @@
+# Load Iris dataset
+data(iris)
+
+# (i) Summary statistics
+dim_iris <- dim(iris)
+structure_iris <- str(iris)
+summary_stats <- summary(iris)
+std_dev <- apply(iris[, -5], 2, sd)  # Standard deviation of features
+
+# (ii) Mean and standard deviation grouped by species
+mean_species <- aggregate(. ~ Species, iris, mean)
+sd_species <- aggregate(. ~ Species, iris, sd)
+
+# (iii) Quantile value of sepal width and length
+quantile_sepal_width <- quantile(iris$Sepal.Width)
+quantile_sepal_length <- quantile(iris$Sepal.Length)
+
+# (iv) Create new data frame with Sepal.Length.Cate
+iris1 <- iris
+iris1$Sepal.Length.Cate <- cut(iris1$Sepal.Length, breaks = quantile(iris1$Sepal.Length), labels = FALSE)
+
+# (v) Average value by species and Sepal.Length.Cate
+avg_by_species_sepal_length_cate <- aggregate(. ~ Species + Sepal.Length.Cate, iris1, mean)
+
+# (vi) Average mean value by species and Sepal.Length.Cate
+avg_mean_by_species_sepal_length_cate <- aggregate(mean ~ Species + Sepal.Length.Cate, data = avg_by_species_sepal_length_cate, FUN = mean)
+
+# (vii) Create Pivot Table
+pivot_table <- table(iris1$Species, iris1$Sepal.Length.Cate)
+print(pivot_table)
