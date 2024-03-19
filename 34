@@ -1,0 +1,10 @@
+# i. Find and replace missing values
+missing_values <- colMeans(is.na(airquality))
+airquality <- ifelse(missing_values < 0.1, na.omit(airquality), replace(airquality, is.na(airquality), mean(airquality, na.rm = TRUE)))
+
+# ii. Linear regression
+lm_model <- lm(Ozone ~ Solar.R, data = airquality)
+
+# iii. Scatter plot with regression line
+plot(airquality$Solar.R, airquality$Ozone, xlab = "Solar.R", ylab = "Ozone")
+abline(lm_model, col = "red")
