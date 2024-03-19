@@ -1,0 +1,18 @@
+# Values
+values <- c(90, 50, 70, 80, 70, 60, 20, 30, 80, 90, 20)
+
+# Mean, median, mode
+mean_value <- mean(values)
+median_value <- median(values)
+mode_value <- names(table(values))[which.max(table(values))]
+
+# 2nd highest and 3rd lowest
+sorted_values <- sort(unique(values))
+second_highest <- sorted_values[length(sorted_values) - 1]
+third_lowest <- sorted_values[3]
+
+print(paste("Mean:", mean_value))
+print(paste("Median:", median_value))
+print(paste("Mode:", mode_value))
+print(paste("2nd Highest:", second_highest))
+print(paste("3rd Lowest:", third_lowest))
