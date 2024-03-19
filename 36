@@ -1,0 +1,9 @@
+# a. Box plot for weight grouped by Diet
+boxplot(ChickWeight$weight ~ ChickWeight$Diet)
+
+# b. Histogram for weight belonging to Diet-1
+hist(ChickWeight$weight[ChickWeight$Diet == 1], main = "Histogram of Weight for Diet 1", xlab = "Weight")
+
+# c. Scatter plot for weight vs Time grouped by Diet
+plot(ChickWeight$Time, ChickWeight$weight, col = ChickWeight$Diet, xlab = "Time", ylab = "Weight")
+legend("topright", legend = levels(as.factor(ChickWeight$Diet)), col = 1:4, pch = 1)
