@@ -1,0 +1,20 @@
+# Load ChickWeight dataset
+data(ChickWeight)
+
+# i.a. Order and extract last 6 records
+ordered_chickweight <- ChickWeight[order(ChickWeight$weight), ]
+last_six_records <- tail(ordered_chickweight, 6)
+
+# ii.a. Melt based on "Chick", "Time", "Diet" as ID variables
+melted_chickweight <- melt(ChickWeight, id.vars = c("Chick", "Time", "Diet"))
+
+# ii.b. Cast to display mean value of weight grouped by Diet
+casted_mean_weight <- dcast(melted_chickweight, Diet ~ ., fun.aggregate = mean)
+
+# ii.c. Cast to display mode of weight grouped by Diet
+casted_mode_weight <- dcast(melted_chickweight, Diet ~ ., fun.aggregate = function(x) {
+  table_factor <- table(x)
+  names(table_factor)[which.max(table_factor)]
+})
+
+# iii. Exploring ChickWeight further...
