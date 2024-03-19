@@ -1,0 +1,15 @@
+# i. Summary statistics
+summary_stats_airquality <- summary(airquality)
+
+# ii. Melt airquality dataset
+library(reshape2)
+melted_airquality <- melt(airquality)
+
+# iii. Melt airquality data specifying month and day as ID variables
+melted_airquality_id <- melt(airquality, id.vars = c("Month", "Day"))
+
+# iv. Cast molten airquality data with respect to month and date features
+casted_airquality <- dcast(melted_airquality_id, Month + Day ~ variable)
+
+# v. Compute the average of Ozone, Solar.R, Wind, and temperature per month
+average_per_month <- aggregate(. ~ Month, airquality, mean, na.rm = TRUE)
