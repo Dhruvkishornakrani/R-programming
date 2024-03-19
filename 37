@@ -1,0 +1,15 @@
+# a. Create multi regression model
+multi_model <- lm(weight ~ Time + Diet, data = ChickWeight)
+
+# b. Predict weight for Time=10 and Diet=1
+new_data <- data.frame(Time = 10, Diet = 1)
+predicted_weight <- predict(multi_model, newdata = new_data)
+print(paste("Predicted weight for Time=10 and Diet=1:", predicted_weight))
+
+# c. Calculate error in the model
+actual_weight <- ChickWeight$weight
+predicted_weight_all <- predict(multi_model)
+error <- actual_weight - predicted_weight_all
+mean_error <- mean(error)
+print(paste("Mean Error in Model:", mean_error))
+
