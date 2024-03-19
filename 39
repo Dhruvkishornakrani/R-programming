@@ -1,0 +1,44 @@
+# Load USArrests dataset
+data(USArrests)
+
+# (i) Summary exploration
+# a. Summary of dataset
+summary_data <- summary(USArrests)
+
+# b. State with largest total number of rape
+state_max_rape <- rownames(USArrests)[which.max(USArrests$Rape)]
+print(paste("State with largest total number of rape:", state_max_rape))
+
+# c. States with max & min crime rates for murder
+max_murder_states <- rownames(USArrests)[which.max(USArrests$Murder)]
+min_murder_states <- rownames(USArrests)[which.min(USArrests$Murder)]
+print(paste("States with max crime rates for murder:", max_murder_states))
+print(paste("States with min crime rates for murder:", min_murder_states))
+
+# (ii) Correlation, states with assault arrests > median, states in bottom 25% of murder
+# a. Correlation among features
+correlation_matrix <- cor(USArrests)
+
+# b. States with assault arrests > median
+median_assault <- median(USArrests$Assault)
+states_assault_gt_median <- rownames(USArrests)[USArrests$Assault > median_assault]
+print("States with assault arrests more than median:")
+print(states_assault_gt_median)
+
+# c. States in bottom 25% of murder
+bottom_25_murder <- quantile(USArrests$Murder, 0.25)
+states_bottom_25_murder <- rownames(USArrests)[USArrests$Murder < bottom_25_murder]
+print("States in bottom 25% of murder:")
+print(states_bottom_25_murder)
+
+# (iii) Visualization
+# a. Histogram and density plot of murder arrests
+hist(USArrests$Murder, main = "Histogram of Murder Arrests by US State", xlab = "Murder Arrests", col = "lightblue")
+lines(density(USArrests$Murder), col = "red")
+
+# b. Scatter plot showing relationship between murder arrest rate and urban population proportion
+plot(USArrests$UrbanPop, USArrests$Murder, col = USArrests$Assault, main = "Murder Arrest Rate vs Urban Population Proportion", xlab = "UrbanPop", ylab = "Murder Arrests")
+legend("topright", legend = levels(USArrests$Assault), col = 1:4, pch = 1)
+
+# c. Bar graph showing murder rate for each state
+barplot(USArrests$Murder, names.arg = rownames(USArrests), main = "Murder Rate by US State", xlab = "State", ylab = "Murder Rate", col = "lightblue")
