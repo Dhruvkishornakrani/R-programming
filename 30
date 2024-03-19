@@ -1,0 +1,18 @@
+# Split data into training and testing sets
+set.seed(123)
+train_indices <- sample(1:nrow(iris), 0.8 * nrow(iris))
+train_data <- iris[train_indices, ]
+test_data <- iris[-train_indices, ]
+
+# Create logistic regression model
+log_model <- glm(Species ~ Petal.Length + Petal.Width, data = train_data, family = binomial)
+
+# Predict probability using test data
+predictions <- predict(log_model, newdata = test_data, type = "response")
+
+# Create confusion matrix
+threshold <- 0.5
+predicted_classes <- ifelse(predictions > threshold, "versicolor", "not versicolor")
+confusion_matrix <- table(predicted_classes, test_data$Species)
+print(confusion_matrix)
+
