@@ -1,0 +1,3 @@
+# Create a factor from the heights of women dataset
+height_factor <- cut(women$height, breaks = 5, labels = c("Short", "Average", "Above Average", "Tall", "Very Tall"))
+print(height_factor)
